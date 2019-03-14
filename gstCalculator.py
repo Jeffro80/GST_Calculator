@@ -4,7 +4,6 @@
 # Quick Desc: Program for calculating GST values
 
 # To Do:
-# - Refactor to be better structured
 # - Add option to change GST rate
 # - Add menu
 
@@ -16,78 +15,16 @@
 gst_rate = 0.15
 
 
-# calculate the total including GST from a GST exclusive total
-def total_incl_gst(amount): 
-    gst_incl = amount + (amount * gst_rate)
-    gst_component = gst_value_from_exclusive(amount)
-    return gst_incl, gst_component
-
-
-# calculate the total excluding GST from a GST inclusive total
-def total_excl_gst(amount): 
-    gst_excl = amount - (amount * (3/23))
-    gst_component = gst_value_from_inclusive(amount)
-    return gst_excl, gst_component
-
-
-# calculate the GST component from a GST inclusive total
-def gst_value_from_inclusive(amount): 
-    gst_value = amount * (3/23)
-    return gst_value
-
-
 # calculate the GST component from a GST exclusive total
 def gst_value_from_exclusive(amount): 
     gst_value = amount * gst_rate
     return gst_value
 
 
-# display options to user
-def options_list():
-    print("""
-What would you like to do:\n
-1. Calculate from a GST exclusive amount
-2. Calculate from a GST inclusive amount """)
-    print("3. I'd like to set the GST amount (currently %.2f%%)" %(gst_rate*100))
-    print("4. Quit\n")
-    
-	
-# get user selection
-def user_selection():
-    correct = False
-    while correct == False:
-        while True: # check that a number is entered
-            try:
-                local_selection = int(input("What would you like to do? Please press either '1'. '2', '3' or '4' "))
-            except ValueError:
-                print("\nSorry I cannot understand that. Please enter a number.\n")
-                continue
-            else:
-                break
-
-        if local_selection < 0 or local_selection > 4:
-            print("\nThat is not a valid selection. Please try again.\n")
-            correct = False
-        else:
-            correct = True
-    return local_selection
-
-
-# check if user wants to repeat
-def user_repeat(selection):
-    local_selection = selection
-    repeat = input("\nWould you like to calculate another total y/n? ")
-    repeat = repeat.lower()
-    if repeat == "n":
-        local_selection = False
-    elif repeat == "y":
-        print("")
-        options_list()
-        local_selection = user_selection()
-    else:
-        print("\nThat is not a valid selection. Please try again")
-        user_repeat(local_selection)
-    return local_selection
+# calculate the GST component from a GST inclusive total
+def gst_value_from_inclusive(amount): 
+    gst_value = amount * (3/23)
+    return gst_value
 
 
 def main():
@@ -153,7 +90,69 @@ def main():
 			print("\nOk, goodbye\n")
 			break
 	   
-	input("\nPress enter to exit")    
+	input("\nPress enter to exit")
+
+
+# display options to user
+def options_list():
+    print("""
+What would you like to do:\n
+1. Calculate from a GST exclusive amount
+2. Calculate from a GST inclusive amount """)
+    print("3. I'd like to set the GST amount (currently %.2f%%)" %(gst_rate*100))
+    print("4. Quit\n")
+
+
+# calculate the total excluding GST from a GST inclusive total
+def total_excl_gst(amount): 
+    gst_excl = amount - (amount * (3/23))
+    gst_component = gst_value_from_inclusive(amount)
+    return gst_excl, gst_component
+
+
+# calculate the total including GST from a GST exclusive total
+def total_incl_gst(amount): 
+    gst_incl = amount + (amount * gst_rate)
+    gst_component = gst_value_from_exclusive(amount)
+    return gst_incl, gst_component
+
+
+# check if user wants to repeat
+def user_repeat(selection):
+    local_selection = selection
+    repeat = input("\nWould you like to calculate another total y/n? ")
+    repeat = repeat.lower()
+    if repeat == "n":
+        local_selection = False
+    elif repeat == "y":
+        print("")
+        options_list()
+        local_selection = user_selection()
+    else:
+        print("\nThat is not a valid selection. Please try again")
+        user_repeat(local_selection)
+    return local_selection
+	
+
+# get user selection
+def user_selection():
+    correct = False
+    while correct == False:
+        while True: # check that a number is entered
+            try:
+                local_selection = int(input("What would you like to do? Please press either '1'. '2', '3' or '4' "))
+            except ValueError:
+                print("\nSorry I cannot understand that. Please enter a number.\n")
+                continue
+            else:
+                break
+
+        if local_selection < 0 or local_selection > 4:
+            print("\nThat is not a valid selection. Please try again.\n")
+            correct = False
+        else:
+            correct = True
+    return local_selection	
 
 
 if __name__ == '__main__':
