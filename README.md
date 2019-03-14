@@ -12,7 +12,7 @@ The GST Calculator calculates GST cost and component cost.
 
 ## Version
 
-Version Number 0.1  
+Version Number 0.4
 
 App last updated <TBC>  
 Readme last updated 14 March 2019
@@ -48,11 +48,17 @@ the app to run:
 
 ## Current development step
 
-<TBC>
+- Refactoring original code
 
 ## Required development steps
 
-<TBC>
+- Move functions so in alphabetical order
+- Set GST value and provide option for user to alter
+- Create a menu for option selection
+- Document functions
+- Fix file so that lines are not too long
+- Split main() into separate function calls including menu
+
 
 ## Future additions
 
