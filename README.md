@@ -52,7 +52,6 @@ the app to run:
 
 ## Required development steps
 
-- Move functions so in alphabetical order
 - Set GST value and provide option for user to alter
 - Create a menu for option selection
 - Document functions
