@@ -1,56 +1,40 @@
-# Overview
+# GST Calculator
 
-The GST Calculator calculates GST cost and component cost.
-
-## Inputs
-
-<TBC>
-
-## Outputs
-
-<TBC>
+GST Calculator calculates GST cost and component cost. It can calculate GST-inclusive
+and GST_exlusive amounts.
 
 ## Version
 
-Version Number 0.4
+Version Number 0.5
 
-App last updated <TBC>  
-Readme last updated 14 March 2019
+App last updated 14 March 2019  
+Readme last updated 22 March 2019
 
-# Operation
+## Operation
 
-- <TBC>
+Run GST_Calculator from within Spyder etc.
 
-# Functions
+## Functions
 
-## <TBC>
+- Calculate GST from a GST-exclusive amount
+- Calculate GST from a GST-inclusive amount
 
-<TBC>
-
-### Required Files
-
-- <TBC>
-
-<TBC>
-
-# Dependencies
+## Dependencies
 
 The following third-party libraries are imported and therefore are required for
 the app to run:
 
-<TBC>
+- Nill
 
-# Development
+## Development
 
-## Known bugs
+### Known bugs
 
-## Items to fix
-
-## Current development step
+### Current development step
 
 - Refactoring original code
 
-## Required development steps
+### Required development steps
 
 - Set GST value and provide option for user to alter
 - Create a menu for option selection
@@ -58,7 +42,7 @@ the app to run:
 - Fix file so that lines are not too long
 - Split main() into separate function calls including menu
 
-
 ## Future additions
 
-<TBC>
+## License
+The content of this repository is licensed under a [Creative Commons Attribution License](http://creativecommons.org/licenses/by/3.0/us/)
