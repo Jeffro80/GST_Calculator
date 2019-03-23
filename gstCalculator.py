@@ -11,8 +11,20 @@
 # Need to check for bugs - try breaking it
 
 
-# set the GST rate
-gst_rate = 0.15
+def calc_from_gst_excl(gst_rate):
+    while True:
+		try:
+			start_amount = float(input("\nWhat is your starting amount (excluding GST)? "))
+		except ValueError:
+			print("\nSorry, I cannot understand that. Please enter a number.\n")
+			continue
+		else:
+            break
+		gst_incl_total, gst_component = total_incl_gst(start_amount)
+		print("\nGST excusive price: %.2f" %start_amount)
+		print("GST component: %.2f" %gst_component)
+		print("\nYour total including GST is %.2f" %gst_incl_total)
+    return
 
 
 # calculate the GST component from a GST exclusive total
@@ -28,29 +40,39 @@ def gst_value_from_inclusive(amount):
 
 
 def main():
-	print("\t\t\tGST Calculator")
-	print("Version 0.4")
-	print("By Jeff Mitchell, March 2015")
+	# Initialise GST rate
+    gst_rate = 0.15
+    repeat = True
+    low = 0
+    high = 6
+    while repeat:
+        try_again = False
+        main_message()
+        try:
+            action = int(input('\nPlease enter the number for your '
+                               'selection --> '))
+        except ValueError:
+            print('Please enter a number between {} and {}.'.format(low, high))
+            try_again = True
+        else:
+            if action < low or action > high:
+                print('\nPlease select from the available options ({} - {})'
+                      .format(low, high))
+                try_again = True
+            elif action == low:
+                help_menu()
+            elif action == 2:
+                calc_from_gst_excl(gst_rate)
+            elif action == high:
+                print('\nIf you have generated any files, please find them '
+                      'saved to disk. Goodbye.')
+                sys.exit()
+            if not try_again:
+                repeat = ad.check_repeat()
+        print('\nPlease find your files saved to disk. Goodbye.')
 
-	options_list()
-	selection = user_selection()
-
-	while user_selection !=4: 
-		if selection == 1:
-			if selection == 4:
-				break
-			while True:
-				try:
-					start_amount = float(input("\nWhat is your starting amount (excluding GST)? "))
-				except ValueError:
-					print("\nSorry, I cannot understand that. Please enter a number.\n")
-					continue
-				else:
-					break
-			gst_incl_total, gst_component = total_incl_gst(start_amount)
-			print("\nGST excusive price: %.2f" %start_amount)
-			print("GST component: %.2f" %gst_component)
-			print("\nYour total including GST is %.2f" %gst_incl_total)
+	
+			
 			
 			# Check if they want to repeat with a new total
 			selection = user_repeat(selection)
@@ -93,14 +115,18 @@ def main():
 	input("\nPress enter to exit")
 
 
-# display options to user
-def options_list():
-    print("""
-What would you like to do:\n
-1. Calculate from a GST exclusive amount
-2. Calculate from a GST inclusive amount """)
-    print("3. I'd like to set the GST amount (currently %.2f%%)" %(gst_rate*100))
-    print("4. Quit\n")
+def main_message():
+    """Display menu of options."""
+    print('\n\n*************==========================*****************')
+    print('\nGST Calculator version 0.5')
+    print('Created by Jeff Mitchell, 2019')
+    print('\nOptions:')
+    print('\n1. Help Menu')
+    print('2. Calculate from a GST exclusive amount')
+    print('3. Calculate from a GST inclusive amount')
+    print('4. Display GST rate')
+    print('5. Set GST rate')
+    print('6. Quit\n')
 
 
 # calculate the total excluding GST from a GST inclusive total
