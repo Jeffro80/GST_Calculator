@@ -12,19 +12,28 @@
 
 
 def calc_from_gst_excl(gst_rate):
+    """Get gst_incl_total and gst_component and display.
+    
+    Calculates the GST inclusive amount and the GST component from a GST
+    exlusive amount. Displays the totals to the user.
+    
+    Args:
+        gst_rate (float): GST rate to apply.
+    """
     while True:
-		try:
-			start_amount = float(input("\nWhat is your starting amount (excluding GST)? "))
-		except ValueError:
-			print("\nSorry, I cannot understand that. Please enter a number.\n")
-			continue
-		else:
+        try:
+            start_amount = float(input('\nWhat is your starting amount '
+                                       '(excluding GST)? '))
+        except ValueError:
+            print('\nSorry, I cannot understand that. Please enter a number '
+                  '.\n')
+            continue
+        else:
             break
-		gst_incl_total, gst_component = total_incl_gst(start_amount)
-		print("\nGST excusive price: %.2f" %start_amount)
-		print("GST component: %.2f" %gst_component)
-		print("\nYour total including GST is %.2f" %gst_incl_total)
-    return
+    gst_incl_total, gst_component = total_incl_gst(start_amount)
+    print('\nGST excusive price: ${:.2f}'.format(start_amount))
+    print('GST component: ${:.2f}'.format(gst_component))
+    print('\nYour total including GST is ${:.2f}'.format(gst_incl_total))
 
 
 # calculate the GST component from a GST exclusive total
@@ -71,12 +80,6 @@ def main():
                 repeat = ad.check_repeat()
         print('\nPlease find your files saved to disk. Goodbye.')
 
-	
-			
-			
-			# Check if they want to repeat with a new total
-			selection = user_repeat(selection)
-		elif selection == 2:
 			if selection == 4:
 				break
 			while True:
