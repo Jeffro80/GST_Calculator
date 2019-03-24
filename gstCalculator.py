@@ -73,6 +73,49 @@ def gst_value_from_inclusive(amount, gst_rate):
     return amount - (amount / (1 + gst_rate))
 
 
+def help_menu():
+    """Display the requested help information."""
+    repeat = True
+    low = 1
+    high = 5
+    while repeat:
+        try_again = False
+        help_menu_message()
+        try:
+            action = int(input('\nPlease enter the number for your '
+                               'selection --> '))
+        except ValueError:
+            print('Please enter a number between {} and {}.'.format(low, high))
+            try_again = True
+        else:
+            if action < low or action > high:
+                print('\nPlease select from the available options ({} - {})'
+                      .format(low, high))
+                try_again = True
+            elif action == low:
+                pass # To Be Written
+            elif action == 2:
+                pass # To Be Written
+            elif action == 3:
+                pass # To Be Written
+            elif action == 5:
+                pass # To Be Written
+            elif action == high:
+                repeat = False
+        if not try_again:
+            repeat = ad.check_repeat_help()
+
+
+def help_menu_message():
+    """Display the help menu options."""
+    print('\nPlease enter the number for the item you would like help on:\n')
+    print('1: <TBC>')
+    print('2: <TBC>')
+    print('3: <TBC>')
+    print('4: <TBC>')
+    print('5: Exit Help Menu')
+
+
 def main():
 	# Initialise GST rate
     gst_rate = 0.15
