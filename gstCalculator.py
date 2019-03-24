@@ -1,5 +1,5 @@
 # Author name: Jeff Mitchell
-# Date: 14 March 2019
+# Date: 24 March 2019
 # Version 0.5
 # Quick Desc: Program for calculating GST values
 
@@ -30,7 +30,7 @@ def calc_from_gst_excl(gst_rate):
             continue
         else:
             break
-    gst_incl_total, gst_component = total_incl_gst(start_amount)
+    gst_incl_total, gst_component = total_incl_gst(start_amount, gst_rate)
     print('\nGST excusive price: ${:.2f}'.format(start_amount))
     print('GST component: ${:.2f}'.format(gst_component))
     print('\nYour total including GST is ${:.2f}'.format(gst_incl_total))
@@ -139,10 +139,22 @@ def total_excl_gst(amount):
     return gst_excl, gst_component
 
 
-# calculate the total including GST from a GST exclusive total
-def total_incl_gst(amount): 
-    gst_incl = amount + (amount * gst_rate)
-    gst_component = gst_value_from_exclusive(amount)
+def total_incl_gst(amount, gst_rate): 
+    """Calculate total including GST.
+    
+    Calculates total including GST and returns the GST inclusive amount and the
+    gst_component amount.
+    
+    Args:
+        amount (float): GST exlusive amount
+        gst_rate (float): GST rate to apply.
+        
+    Returns:
+        gst_incl (float): GST inclusive total
+        gst_component (float): GST component of total.
+    """
+    gst_component = amount * gst_rate
+    gst_incl = amount + (gst_component)
     return gst_incl, gst_component
 
 
