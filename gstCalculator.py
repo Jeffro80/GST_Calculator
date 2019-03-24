@@ -61,12 +61,6 @@ def calc_from_gst_incl(gst_rate):
     print('\nYour total excluding GST is ${:.2f}'.format(gst_excl_total))
 
 
-# calculate the GST component from a GST exclusive total
-def gst_value_from_exclusive(amount): 
-    gst_value = amount * gst_rate
-    return gst_value
-
-
 def gst_value_from_inclusive(amount, gst_rate):
     """Calculate GST component from a GST inclusive total.
     
@@ -119,15 +113,7 @@ def main():
             if not try_again:
                 repeat = ad.check_repeat()
         print('\nPlease find your files saved to disk. Goodbye.')
-
-			
-			options_list()
-			selection = user_selection()
-		else:
-			print("\nOk, goodbye\n")
-			break
-	   
-	input("\nPress enter to exit")
+    input("\nPress enter to exit")
 
 
 def main_message():
@@ -162,7 +148,7 @@ def set_gst_rate(gst_rate):
             continue
         else:
             break
-	print('The new GST rate is {:.3f}\n'.format(gst_rate))
+    print('The new GST rate is {:.3f}\n'.format(gst_rate))
 
 
 def total_excl_gst(amount, gst_rate):
@@ -201,44 +187,6 @@ def total_incl_gst(amount, gst_rate):
     gst_component = amount * gst_rate
     gst_incl = amount + (gst_component)
     return gst_incl, gst_component
-
-
-# check if user wants to repeat
-def user_repeat(selection):
-    local_selection = selection
-    repeat = input("\nWould you like to calculate another total y/n? ")
-    repeat = repeat.lower()
-    if repeat == "n":
-        local_selection = False
-    elif repeat == "y":
-        print("")
-        options_list()
-        local_selection = user_selection()
-    else:
-        print("\nThat is not a valid selection. Please try again")
-        user_repeat(local_selection)
-    return local_selection
-	
-
-# get user selection
-def user_selection():
-    correct = False
-    while correct == False:
-        while True: # check that a number is entered
-            try:
-                local_selection = int(input("What would you like to do? Please press either '1'. '2', '3' or '4' "))
-            except ValueError:
-                print("\nSorry I cannot understand that. Please enter a number.\n")
-                continue
-            else:
-                break
-
-        if local_selection < 0 or local_selection > 4:
-            print("\nThat is not a valid selection. Please try again.\n")
-            correct = False
-        else:
-            correct = True
-    return local_selection	
 
 
 if __name__ == '__main__':
