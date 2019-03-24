@@ -111,7 +111,7 @@ def main():
             elif action == 4:
                 pass
             elif action == 5:
-                pass
+                gst_rate = set_gst_rate(gst_rate)
             elif action == high:
                 print('\nIf you have generated any files, please find them '
                       'saved to disk. Goodbye.')
@@ -120,20 +120,7 @@ def main():
                 repeat = ad.check_repeat()
         print('\nPlease find your files saved to disk. Goodbye.')
 
-			# Check if they want to repeat with a new total
-			selection = user_repeat(selection)
-		elif selection == 3:
-			if selection == 4:
-				break
-			while True:
-				try:
-					gst_rate = float(input("\nWhat is the GST rate (to three decimal places e.g. for 15% type 0.150)? "))
-				except ValueError:
-					print("\nSorry, I cannot understand that. Please enter a number.")
-					continue
-				else:
-					break
-			print("The new GST rate is %.3f\n" %gst_rate)
+			
 			options_list()
 			selection = user_selection()
 		else:
@@ -155,6 +142,27 @@ def main_message():
     print('4. Display GST rate')
     print('5. Set GST rate')
     print('6. Quit\n')
+
+
+def set_gst_rate(gst_rate):
+    """Set the GST rate.
+    
+    Args:
+        gst_rate (float): Current GST rate.
+        
+    Returns:
+        gst_rate (float): New GST rate.
+    """
+    while True:
+        try:
+            gst_rate = float(input('\nWhat is the GST rate (to three decimal '
+                                    'places e.g. for 15% type 0.150)? '))
+        except ValueError:
+            print('\nSorry, I cannot understand that. Please enter a number.')
+            continue
+        else:
+            break
+	print('The new GST rate is {:.3f}\n'.format(gst_rate))
 
 
 def total_excl_gst(amount, gst_rate):
