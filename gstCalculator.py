@@ -3,12 +3,9 @@
 # Version 0.5
 # Quick Desc: Program for calculating GST values
 
-# To Do:
-# - Add option to change GST rate
-# - Add menu
 
-# To fix:
-# Need to check for bugs - try breaking it
+import custtools.admintools as ad
+import sys
 
 
 def calc_from_gst_excl(gst_rate):
