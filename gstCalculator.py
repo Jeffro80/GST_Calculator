@@ -108,6 +108,10 @@ def main():
                 calc_from_gst_excl(gst_rate)
             elif action == 3:
                 calc_from_gst_incl(gst_rate)
+            elif action == 4:
+                pass
+            elif action == 5:
+                pass
             elif action == high:
                 print('\nIf you have generated any files, please find them '
                       'saved to disk. Goodbye.')
@@ -115,9 +119,6 @@ def main():
             if not try_again:
                 repeat = ad.check_repeat()
         print('\nPlease find your files saved to disk. Goodbye.')
-
-			
-			
 
 			# Check if they want to repeat with a new total
 			selection = user_repeat(selection)
