@@ -36,16 +36,50 @@ def calc_from_gst_excl(gst_rate):
     print('\nYour total including GST is ${:.2f}'.format(gst_incl_total))
 
 
+def calc_from_gst_incl(gst_rate):
+    """Get gst_excl_total and gst_component and display.
+    
+    Calculates the GST exlusive amount and the GST component from a GST
+    inclusive amount. Displays the totals to the user.
+    
+    Args:
+        gst_rate (float): GST rate to apply.
+    """
+    while True:
+        try:
+            start_amount = float(input('\nWhat is your starting amount '
+                                       '(including GST)? '))
+        except ValueError:
+            print('\nSorry, I cannot understand that. Please enter a '
+                  'number.')
+            continue
+        else:
+            break
+    gst_excl_total, gst_component = total_excl_gst(start_amount, gst_rate)
+    print('\nGST inclusive price: ${:.2f}'.format(start_amount))
+    print('GST component: ${:.2f}'.format(gst_component))
+    print('\nYour total excluding GST is ${:.2f}'.format(gst_excl_total))
+
+
 # calculate the GST component from a GST exclusive total
 def gst_value_from_exclusive(amount): 
     gst_value = amount * gst_rate
     return gst_value
 
 
-# calculate the GST component from a GST inclusive total
-def gst_value_from_inclusive(amount): 
-    gst_value = amount * (3/23)
-    return gst_value
+def gst_value_from_inclusive(amount, gst_rate):
+    """Calculate GST component from a GST inclusive total.
+    
+    GST amount calculated as amount - (1 + gst_rate)).
+    
+    Args:
+        amount (float): GST inclusive amount
+        gst_rate (float): GST rate to apply.
+        
+    Returns:
+        gst_component (float): Calculated GST component.
+    """          
+    return amount - (amount / (1 + gst_rate))
 
 
 def main():
@@ -72,6 +106,8 @@ def main():
                 help_menu()
             elif action == 2:
                 calc_from_gst_excl(gst_rate)
+            elif action == 3:
+                calc_from_gst_incl(gst_rate)
             elif action == high:
                 print('\nIf you have generated any files, please find them '
                       'saved to disk. Goodbye.')
@@ -80,20 +116,8 @@ def main():
                 repeat = ad.check_repeat()
         print('\nPlease find your files saved to disk. Goodbye.')
 
-			if selection == 4:
-				break
-			while True:
-				try:
-					start_amount = float(input("\nWhat is your starting amount (including GST)? "))
-				except ValueError:
-					print("\nSorry, I cannot understand that. Please enter a number.")
-					continue
-				else:
-					break
-			gst_excl_total, gst_component = total_excl_gst(start_amount)
-			print("\nGST inclusive price: %.2f" %start_amount)
-			print("GST component: %.2f" %gst_component)
-			print("\nYour total excluding GST is %.2f" %gst_excl_total)
+			
+			
 
 			# Check if they want to repeat with a new total
 			selection = user_repeat(selection)
@@ -132,11 +156,23 @@ def main_message():
     print('6. Quit\n')
 
 
-# calculate the total excluding GST from a GST inclusive total
-def total_excl_gst(amount): 
-    gst_excl = amount - (amount * (3/23))
-    gst_component = gst_value_from_inclusive(amount)
-    return gst_excl, gst_component
+def total_excl_gst(amount, gst_rate):
+    """Calculate total excluding GST.
+    
+    Calculates total exluding GST and returns the GST exlusive amount and the
+    gst_component amount.
+    
+    Args:
+        amount (float): GST inclusive amount
+        gst_rate (float): GST rate to apply.
+        
+    Returns:
+        gst_excl (float): GST exclusive total
+        gst_component (float): GST component of total.
+    """
+    gst_component = gst_value_from_inclusive(amount, gst_rate)
+    gst_excl = amount - gst_component
+    return gst_excl, gst_component    
 
 
 def total_incl_gst(amount, gst_rate): 
