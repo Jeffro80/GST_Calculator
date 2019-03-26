@@ -28,9 +28,9 @@ def calc_from_gst_excl(gst_rate):
         else:
             break
     gst_incl_total, gst_component = total_incl_gst(start_amount, gst_rate)
-    print('\nGST excusive price: ${:.2f}'.format(start_amount))
+    print('\nGST-exclusive price: ${:.2f}'.format(start_amount))
     print('GST component: ${:.2f}'.format(gst_component))
-    print('\nYour total including GST is ${:.2f}'.format(gst_incl_total))
+    print('Your total including GST is ${:.2f}'.format(gst_incl_total))
 
 
 def calc_from_gst_incl(gst_rate):
@@ -53,9 +53,9 @@ def calc_from_gst_incl(gst_rate):
         else:
             break
     gst_excl_total, gst_component = total_excl_gst(start_amount, gst_rate)
-    print('\nGST inclusive price: ${:.2f}'.format(start_amount))
+    print('\nGST-inclusive price: ${:.2f}'.format(start_amount))
     print('GST component: ${:.2f}'.format(gst_component))
-    print('\nYour total excluding GST is ${:.2f}'.format(gst_excl_total))
+    print('Your total excluding GST is ${:.2f}'.format(gst_excl_total))
 
 
 def gst_value_from_inclusive(amount, gst_rate):
@@ -163,8 +163,8 @@ def main_message():
     print('Created by Jeff Mitchell, 2019')
     print('\nOptions:')
     print('\n1. Help Menu')
-    print('2. Calculate from a GST exclusive amount')
-    print('3. Calculate from a GST inclusive amount')
+    print('2. Calculate from a GST-exclusive amount')
+    print('3. Calculate from a GST-inclusive amount')
     print('4. Display GST rate')
     print('5. Set GST rate')
     print('6. Quit\n')
