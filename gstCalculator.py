@@ -67,7 +67,7 @@ def display_gst_rate(gst_rate):
         gst_rate (float): Current GST rate.
     """
     percent = gst_rate * 100
-    print('\nCurrent GST rate: {:.2f}, ({:.2f}%)'.format(gst_rate, percent))
+    print('Current GST rate: {:.2f}, ({:.2f}%)'.format(gst_rate, percent))
 
 
 def gst_value_from_inclusive(amount, gst_rate):
@@ -159,6 +159,7 @@ def main():
                 try_again = True
             elif action == 5:
                 gst_rate = set_gst_rate(gst_rate)
+                try_again = True
             elif action == high:
                 print('\nIf you have generated any files, please find them '
                       'saved to disk. Goodbye.')
@@ -201,6 +202,7 @@ def set_gst_rate(gst_rate):
         else:
             break
     display_gst_rate(gst_rate)
+    return(gst_rate)
 
 
 def total_excl_gst(amount, gst_rate):
