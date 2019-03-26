@@ -32,15 +32,15 @@ the app to run:
 
 ### Current development step
 
-- Test existing code
+- Add help items
 
 ### Required development steps
 
-- Add help items
+- Add tracking of totals
+- Create a dict to hold each item (number as key) and a list of values (name, excl_amount, incl_amount, gst_amount)
 
 ## Future additions
 
-- Tally multiple items and track GST component and non-GST component
 - Deal with non-GST items
 
 ## License
