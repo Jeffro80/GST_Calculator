@@ -1,7 +1,7 @@
 # GST Calculator
 
 GST Calculator calculates GST cost and component cost. It can calculate GST-inclusive
-and GST-exlusive amounts.
+and GST-exclusive amounts.
 
 ## Version
 
