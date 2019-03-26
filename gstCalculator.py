@@ -29,6 +29,7 @@ def calc_from_gst_excl(gst_rate):
             break
     gst_incl_total, gst_component = total_incl_gst(start_amount, gst_rate)
     print('\nGST-exclusive price: ${:.2f}'.format(start_amount))
+    display_gst_rate(gst_rate)
     print('GST component: ${:.2f}'.format(gst_component))
     print('Your total including GST is ${:.2f}'.format(gst_incl_total))
 
@@ -54,8 +55,19 @@ def calc_from_gst_incl(gst_rate):
             break
     gst_excl_total, gst_component = total_excl_gst(start_amount, gst_rate)
     print('\nGST-inclusive price: ${:.2f}'.format(start_amount))
+    display_gst_rate(gst_rate)
     print('GST component: ${:.2f}'.format(gst_component))
     print('Your total excluding GST is ${:.2f}'.format(gst_excl_total))
+
+
+def display_gst_rate(gst_rate):
+    """Displays the GST rate to the screen.
+    
+    Args:
+        gst_rate (float): Current GST rate.
+    """
+    percent = gst_rate * 100
+    print('\nCurrent GST rate: {:.2f}, ({:.2f}%)'.format(gst_rate, percent))
 
 
 def gst_value_from_inclusive(amount, gst_rate):
@@ -143,7 +155,8 @@ def main():
             elif action == 3:
                 calc_from_gst_incl(gst_rate)
             elif action == 4:
-                pass
+                display_gst_rate(gst_rate)
+                try_again = True
             elif action == 5:
                 gst_rate = set_gst_rate(gst_rate)
             elif action == high:
@@ -152,7 +165,6 @@ def main():
                 sys.exit()
             if not try_again:
                 repeat = ad.check_repeat()
-        print('\nPlease find your files saved to disk. Goodbye.')
     input("\nPress enter to exit")
 
 
@@ -188,7 +200,7 @@ def set_gst_rate(gst_rate):
             continue
         else:
             break
-    print('The new GST rate is {:.3f}\n'.format(gst_rate))
+    display_gst_rate(gst_rate)
 
 
 def total_excl_gst(amount, gst_rate):
