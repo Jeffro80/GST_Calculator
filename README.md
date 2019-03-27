@@ -7,8 +7,8 @@ and GST-exlusive amounts.
 
 Version Number 0.5
 
-App last updated 27 March 2019  
-Readme last updated 27 March 2019
+App last updated 28 March 2019  
+Readme last updated 28 March 2019
 
 ## Operation
 
@@ -37,11 +37,13 @@ the app to run:
 ### Required development steps
 
 - Add tracking of totals
-- Create a dict to hold each item (number as key) and a list of values (name, excl_amount, incl_amount, gst_amount)
+- Add adding of items to records_dict at calculation steps
 
 ## Future additions
 
 - Deal with non-GST items
+- Function to display current items
+- Function to display individual item
 
 ## License
 The content of this repository is licensed under a [Creative Commons Attribution License](http://creativecommons.org/licenses/by/3.0/us/)
