@@ -32,6 +32,7 @@ def calc_from_gst_excl(gst_rate, records_dict):
     display_gst_rate(gst_rate)
     print('GST component: ${:.2f}'.format(gst_component))
     print('Your total including GST is ${:.2f}'.format(gst_incl_total))
+    # Add check if want to add item to records_dict
 
 
 def calc_from_gst_incl(gst_rate, records_dict):
@@ -58,6 +59,7 @@ def calc_from_gst_incl(gst_rate, records_dict):
     display_gst_rate(gst_rate)
     print('GST component: ${:.2f}'.format(gst_component))
     print('Your total excluding GST is ${:.2f}'.format(gst_excl_total))
+    # Add check if want to add item to records_dict
 
 
 def display_gst_rate(gst_rate):
@@ -150,7 +152,7 @@ def main():
     records_dict = {}
     repeat = True
     low = 0
-    high = 6
+    high = 8
     while repeat:
         try_again = False
         main_message()
@@ -177,6 +179,10 @@ def main():
             elif action == 5:
                 gst_rate = set_gst_rate(gst_rate)
                 try_again = True
+            elif action == 6:
+                pass # Function to view all items
+            elif action == 7:
+                pass # Function to view individual item
             elif action == high:
                 print('\nIf you have generated any files, please find them '
                       'saved to disk. Goodbye.')
@@ -197,7 +203,9 @@ def main_message():
     print('3. Calculate from a GST-inclusive amount')
     print('4. Display GST rate')
     print('5. Set GST rate')
-    print('6. Quit\n')
+    print('6. View all saved items')
+    print('7. View item in saved items')
+    print('8. Quit\n')
 
 
 def set_gst_rate(gst_rate):
