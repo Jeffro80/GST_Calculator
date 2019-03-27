@@ -1,5 +1,5 @@
 # Author name: Jeff Mitchell
-# Date: 24 March 2019
+# Date: 28 March 2019
 # Version 0.5
 # Quick Desc: Program for calculating GST values
 
@@ -8,7 +8,7 @@ import custtools.admintools as ad
 import sys
 
 
-def calc_from_gst_excl(gst_rate):
+def calc_from_gst_excl(gst_rate, records_dict):
     """Get gst_incl_total and gst_component and display.
     
     Calculates the GST inclusive amount and the GST component from a GST
@@ -34,7 +34,7 @@ def calc_from_gst_excl(gst_rate):
     print('Your total including GST is ${:.2f}'.format(gst_incl_total))
 
 
-def calc_from_gst_incl(gst_rate):
+def calc_from_gst_incl(gst_rate, records_dict):
     """Get gst_excl_total and gst_component and display.
     
     Calculates the GST exlusive amount and the GST component from a GST
@@ -131,6 +131,8 @@ def help_menu_message():
 def main():
 	# Initialise GST rate
     gst_rate = 0.15
+    # Initialise records_dict
+    records_dict = {}
     repeat = True
     low = 0
     high = 6
@@ -151,9 +153,9 @@ def main():
             elif action == low:
                 help_menu()
             elif action == 2:
-                calc_from_gst_excl(gst_rate)
+                calc_from_gst_excl(gst_rate, records_dict)
             elif action == 3:
-                calc_from_gst_incl(gst_rate)
+                calc_from_gst_incl(gst_rate, records_dict)
             elif action == 4:
                 display_gst_rate(gst_rate)
                 try_again = True
