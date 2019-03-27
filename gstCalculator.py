@@ -128,6 +128,21 @@ def help_menu_message():
     print('5: Exit Help Menu')
 
 
+def item_constructor():
+    """Create an empty dict for storing record_dict item values.
+    
+    Returns:
+        item (dict): Empty dict with required keys.
+    """
+    item = {}
+    item['gst_exlusive_total'] = 0
+    item['gst_inclusive_total'] = 0
+    item['gst_rate'] = 0
+    item['gst_component'] = 0
+    item['item_desc'] = ''
+    return item    
+
+
 def main():
 	# Initialise GST rate
     gst_rate = 0.15
