@@ -4,7 +4,7 @@
 # Quick Desc: Program for calculating GST values
 
 
-import custtools.admintools as ad
+import admintools as ad
 import sys
 
 
